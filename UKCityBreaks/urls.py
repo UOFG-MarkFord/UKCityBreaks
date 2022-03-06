@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from UKCB import views
 
 urlpatterns = [
+    path('', views.index, name='index'),
+    path('UKCB/', include('UKCB.urls')),
+    # The above maps any URLs starting with UKCB/ to be handled by UKCB.
     path('admin/', admin.site.urls),
+    
 ]
