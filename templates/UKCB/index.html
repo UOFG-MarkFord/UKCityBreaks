@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+{% load staticfiles %} <!-- New line -->
+
+<html>
+	<head>
+		<title>Rango</title>
+	</head>
+	<body>
+		<h1>Rango says...</h1>
+		<div>
+			hey there partner! <br />
+		<strong>{{ boldmessage }}</strong><br />
+		</div>
+		<div>
+			<a href="/UKCB/AllCities/">AllCities</a><br />
+			<img src="{% static 'images/UKFlag.jpg' %}" alt="Picture of UK Flag" /> <!-- New line -->
+		</div>
+	</body>
+</html>

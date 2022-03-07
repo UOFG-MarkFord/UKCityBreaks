@@ -4,7 +4,22 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return HttpResponse("<a href='/UKCB/about/'>About</a> Rango says hey there partner!")
+    # Construct a dictionary to pass to the template engine as its context.
+    # Note the key boldmessage matches to {{ boldmessage }} in the template!
+    context_dict = {'boldmessage': 'Crunchy, creamy, cookie, candy, cupcake!'}
+    # Return a rendered response to send to the client.
+    # We make use of the shortcut function to make our lives easier.
+    # Note that the first parameter is the template we wish to use.
+    return render(request, 'UKCB/index.html', context=context_dict)
 
-def about(request):
-    return HttpResponse(" <a href='/UKCB/'>Index</a>Rango says here is the about page.")
+def AllCities(request):
+
+    # Construct a dictionary to pass to the template engine as its context.
+    # Note the key boldmessage matches to {{ boldmessage }} in the template!
+    context_dict = {'boldmessage': 'This tutorial has been put together by WAD2 Team 14D '}
+    # Return a rendered response to send to the client.
+    # We make use of the shortcut function to make our lives easier.
+    # Note that the first parameter is the template we wish to use.
+    return render(request, 'UKCB/AllCities.html', context=context_dict)
+
+   

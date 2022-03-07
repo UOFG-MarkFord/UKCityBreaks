@@ -4,5 +4,6 @@ app_name = 'UKCB'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('about/', views.about, name='about'),
-]
+    path('AllCities/', views.AllCities, name='AllCities'),
+]
+
