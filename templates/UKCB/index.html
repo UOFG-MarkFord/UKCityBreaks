@@ -4,13 +4,29 @@
 
 <html>
 	<head>
-		<title>Rango</title>
+		<title>UKCityBreaks</title>
 	</head>
 	<body>
-		<h1>Rango says...</h1>
+		<h1>UKCityBreaks</h1>
 		<div>
 			hey there partner! <br />
 		<strong>{{ boldmessage }}</strong><br />
+		</div>
+		<div>
+			{% if cities %}
+				<ul>
+				{% for city in cities %}
+				
+					<li>
+					<!-- The following line is changed to add an HTML hyperlink -->
+					<a href="/UKCB/City/{{ city.slug }}/">{{ city.Name }}</a>
+					</li>
+
+				{% endfor %}
+				</ul>
+			{% else %}
+				<strong>There are no cities present.</strong>
+			{% endif %}
 		</div>
 		<div>
 			<a href="/UKCB/AllCities/">AllCities</a><br />

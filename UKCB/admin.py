@@ -7,6 +7,9 @@ from UKCB.models import City, Review
 class ReviewAdmin(admin.ModelAdmin):
      list_display = ('City','Rating', 'Price', 'Text')
 
-admin.site.register(City)
+class CityAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('Name',)}
+
+admin.site.register(City,CityAdmin)
 admin.site.register(Review,ReviewAdmin)
 

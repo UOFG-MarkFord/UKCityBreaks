@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 class City(models.Model):
@@ -7,7 +8,12 @@ class City(models.Model):
     Name = models.CharField(max_length=64)
     Tag =  models.CharField(max_length=64)
     Description = models.CharField(max_length=2048)
-    
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.Name)
+        super(City, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name_plural = 'Cities'
 

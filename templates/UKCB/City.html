@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Rango</title>
+	</head>
+
+	<body>
+		<div>
+			{% if City %}
+				<h1>{{ City.Name }}</h1>
+				{% if Reviews %}
+					<ul>
+						{% for Review in Reviews %}
+						<li>Rating: {{ Review.Rating }} Price: {{ Review.Price }} Text: {{ Review.Text }}</</li>
+				
+						{% endfor %}
+					</ul>
+				{% else %}
+					<strong>No Reviews currently for city.</strong>
+				{% endif %}
+			{% else %}
+				The specified city does not exist.
+			{% endif %}
+		</div>
+		<div>
+			<a href="/UKCB/">Home</a><br />
+		</div>
+	</body>
+
+</html>
