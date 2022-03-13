@@ -1,7 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
-# Create your models here.
 class City(models.Model):
 
     CityID = models.AutoField(primary_key=True)
@@ -16,24 +15,17 @@ class City(models.Model):
 
     class Meta:
         verbose_name_plural = 'Cities'
-
-        
+ 
     def __str__(self):
         return self.Name
     
 class Review(models.Model):
 
-    
-    ReviewID = models.AutoField(primary_key=True)
-    
-    City = models.ForeignKey(City, on_delete=models.CASCADE)
-    
-    Rating = models.IntegerField(default=0)
-    
+    ReviewID = models.AutoField(primary_key=True)   
+    City = models.ForeignKey(City, on_delete=models.CASCADE)   
+    Rating = models.IntegerField(default=0) 
     Price = models.IntegerField(default=0)
-    
     Text = models.CharField(max_length=2048)
-
-    
+ 
     def __str__(self):
         return self.Text

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NotRango</title>
+	</head>
+
+	<body>
+		<h1>Add a City</h1>
+		<div>
+			<form id="city_form" method="post" action="/UKCB/add_city/">
+				{% csrf_token %}
+				{% for hidden in form.hidden_fields %}
+					{{ hidden }}
+				{% endfor %}
+				{% for field in form.visible_fields %}
+					{{ field.errors }}
+					{{ field.help_text }}
+					{{ field }}
+				{% endfor %}
+				<input type="submit" name="submit" value="Create City"/>
+			</form>
+		</div>
+	</body>
+</html>
