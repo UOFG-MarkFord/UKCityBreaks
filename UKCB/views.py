@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from UKCB.models import City
@@ -5,6 +6,9 @@ from UKCB.models import Review
 from UKCB.forms import ReviewForm
 from django.shortcuts import redirect
 from django.urls import reverse
+
+
+
 
 # Create your views here.
 
@@ -64,6 +68,7 @@ def show_city(request, city_name_slug):
 
 
 
+
 def add_review(request, city_name_slug):
 
     try:
@@ -93,3 +98,4 @@ def add_review(request, city_name_slug):
             
     context_dict = {'form': form, 'city': city}
     return render(request, 'UKCB/add_review.html', context=context_dict)
+
