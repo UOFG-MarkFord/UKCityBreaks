@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from UKCB.models import City
 from UKCB.models import Review
-
+from UKCB.forms import ReviewForm
+from django.shortcuts import redirect
+from django.urls import reverse
 
 # Create your views here.
 
@@ -10,7 +12,8 @@ def index(request):
 
     city_list = City.objects.order_by('-Name')[:5]
     
-    context_dict = {}
+    context_dict = {}
+
     
     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
     context_dict['cities'] = city_list
@@ -58,3 +61,35 @@ def show_city(request, city_name_slug):
         
     # Go render the response and return it to the client.
     return render(request, 'UKCB/City.html', context=context_dict)
+
+
+
+def add_review(request, city_name_slug):
+
+    try:
+        city = City.objects.get(slug=city_name_slug)
+    except City.DoesNotExist:
+        city = None
+        
+    # You cannot add a page to a Category that does not exist...
+    if city is None:
+        return redirect('/UKCB/')
+    
+    form = ReviewForm()
+    
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        
+        if form.is_valid():
+           if city:
+                review = form.save(commit=False)
+                review.City = city
+                
+                review.save()
+                return redirect(reverse('UKCB:show_city', kwargs={'city_name_slug':city_name_slug}))
+            
+        else:
+            print(form.errors)
+            
+    context_dict = {'form': form, 'city': city}
+    return render(request, 'UKCB/add_review.html', context=context_dict)
