@@ -1,21 +1,21 @@
-<!DOCTYPE html>
+{% extends 'UKCB/base.html' %}
+{% load staticfiles %}
 
-{% load staticfiles %} <!-- New line -->
+{% block title_block %}
+	UKCityBreaks - AllCities
+{% endblock %}
 
-<html>
-	<head>
-		<title>UKCityBreaks - AllCities</title>
-	</head>
-	<body>
+
+{% block body_block %}
 		<h1>All Cities</h1>
 		<div>
-			here is the AllCities page <br />
+			Here is the AllCities page <br />
 		<strong>{{ boldmessage }}</strong><br />
 		</div>
 		<div>
-			<a href="/UKCB/">Home</a><br />
+			
 			<img src="{% static 'images/UKFlag.jpg' %}" alt="Picture of UK Flag" /> <!-- New line -->
 			<img src="{{ MEDIA_URL }}UkraineFlag.jpg" alt="Picture of Ukraine Flag" /> <!-- New line -->
 		</div>
-	</body>
-</html>
+		
+{% endblock %}

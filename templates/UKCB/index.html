@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+{% extends 'UKCB/base.html' %}
+{% load staticfiles %}
 
-{% load staticfiles %} <!-- New line -->
+{% block title_block %}
+	UKCityBreaks
+{% endblock %}
 
-<html>
-	<head>
-		<title>UKCityBreaks</title>
-	</head>
-	<body>
+
+{% block body_block %}
+
 		<h1>UKCityBreaks</h1>
 		<div>
 			hey there partner! <br />
@@ -19,7 +20,11 @@
 				
 					<li>
 					<!-- The following line is changed to add an HTML hyperlink -->
-					<a href="/UKCB/City/{{ city.slug }}/">{{ city.Name }}</a>
+					
+					
+						<a href="{% url 'UKCB:show_city' city.slug %}">{{ city.Name }}</a>
+						
+						
 					</li>
 
 				{% endfor %}
@@ -29,9 +34,10 @@
 			{% endif %}
 		</div>
 		<div>
-			<a href="/UKCB/AllCities/">AllCities</a><br />
+		
+			<a href="{% url 'UKCB:AllCities' %}">All Cities</a>
+			<br>
 			
 			<img src="{% static 'images/UKFlag.jpg' %}" alt="Picture of UK Flag" /> <!-- New line -->
 		</div>
-	</body>
-</html>
+{% endblock %}

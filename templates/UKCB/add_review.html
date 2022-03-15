@@ -1,14 +1,14 @@
-<!DOCTYPE html>
 
+{% extends 'UKCB/base.html' %}
+{% load staticfiles %}
 
-<html>
+{% block title_block %}
+	Add a Review
+{% endblock %}
 
-	<head>
-		<title>Rango</title>
-	</head>
+{% block body_block %}
 
-	<body>
-		<h1>Add page</h1><br/>
+		<h1>Add Review</h1><br/>
 
 		<form id="review_form" method="POST" action="{% url 'UKCB:add_review' city.slug %}">
 		{% csrf_token %}
@@ -22,9 +22,7 @@
 			{{ field }}
 		{% endfor %}
 
-		<input type="submit" name="submit" value="Create Page" />
+		<input type="submit" name="submit" value="Create Review" />
 	</form>
-	</body>
-
-
-</html>
+	
+{% endblock %}

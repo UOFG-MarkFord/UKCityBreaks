@@ -1,36 +1,36 @@
-<!DOCTYPE html>
+{% extends 'UKCB/base.html' %}
+{% load staticfiles %}
 
-<html>
+{% block title_block %}
+	{% if City %}
+		{{ City.Name }}
+	{% else %}
+		Unknown Category
+	{% endif %}
+{% endblock %}
 
-	<head>
-		<title>Rango</title>
-	</head>
 
-	<body>
-		<div>
-			{% if City %}
-				<h1>{{ City.Name }}</h1>
-				{% if Reviews %}
-					<ul>
-						{% for Review in Reviews %}
-						<li>Rating: {{ Review.Rating }} Price: {{ Review.Price }} Text: {{ Review.Text }}</</li>
-				
-						{% endfor %}
-					</ul>
-				{% else %}
-					<strong>No Reviews currently for city.</strong>
-				{% endif %}
-				
-				<a href="/UKCB/City/{{City.slug }}/add_review/">Add Review</a>
-				
-			{% else %}
-				The specified city does not exist.
-			{% endif %}
-		</div>
-		<div>
-			<a href="/UKCB/">Home</a><br />
+{% block body_block %}
+	
+	{% if City %}
+		<h1>{{ City.Name }}</h1>
+		{% if Reviews %}
+			<ul>
+				{% for Review in Reviews %}
+				<li>Rating: {{ Review.Rating }} Price: {{ Review.Price }} Text: {{ Review.Text }}</</li>
+		
+				{% endfor %}
+			</ul>
+		{% else %}
+			<strong>No Reviews currently for city.</strong>
+		{% endif %}
+			
+		<a href="{% url 'UKCB:add_review' City.slug %}">Add Review</a>
+		
+	{% else %}
+		The specified city does not exist.
+	{% endif %}
 
-		</div>
-	</body>
+{% endblock %}
 
-</html>
+
