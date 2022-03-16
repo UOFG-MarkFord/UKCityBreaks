@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from UKCB.models import UserProfile
 from UKCB.models import City, Review
 
 # Register your models here.
@@ -12,4 +12,4 @@ class CityAdmin(admin.ModelAdmin):
 
 admin.site.register(City,CityAdmin)
 admin.site.register(Review,ReviewAdmin)
-
+admin.site.register(UserProfile)

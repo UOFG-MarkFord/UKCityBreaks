@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
 
 class City(models.Model):
 
@@ -29,3 +30,13 @@ class Review(models.Model):
  
     def __str__(self):
         return self.Text
+
+class UserProfile(models.Model):
+    # This line is required. Links UserProfile to a User model instance.
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+    # The additional attributes we wish to include.
+  
+    
+    def __str__(self):
+        return self.user.username

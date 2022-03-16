@@ -24,8 +24,10 @@
 		{% else %}
 			<strong>No Reviews currently for city.</strong>
 		{% endif %}
-			
-		<a href="{% url 'UKCB:add_review' City.slug %}">Add Review</a>
+		
+		{% if user.is_authenticated %}	
+			<a href="{% url 'UKCB:add_review' City.slug %}">Add Review</a>
+		{% endif %}
 		
 	{% else %}
 		The specified city does not exist.

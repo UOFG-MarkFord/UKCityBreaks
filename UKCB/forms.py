@@ -1,5 +1,7 @@
 from django import forms
 from UKCB.models import Review
+from django.contrib.auth.models import User
+from UKCB.models import UserProfile
 
 class ReviewForm(forms.ModelForm):
 
@@ -37,3 +39,13 @@ class ReviewForm(forms.ModelForm):
             url = f'http://{url}'
             cleaned_data['url'] = url
 
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    
+    class Meta:
+        model = User
+        fields = ('username', 'password',)
+
+
+
+        
