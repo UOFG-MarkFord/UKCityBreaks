@@ -203,10 +203,20 @@ def user_logout(request):
 
 @login_required
 def MyAccount(request):
-
+    
+    context_dict = {}
+    
+    current_user = request.user
+    
+    review = Review.objects.filter(WrittenBy=current_user)
+        
+    # Adds our results list to the template context under name pages.
+    context_dict['Reviews'] = review
     # Construct a dictionary to pass to the template engine as its context.
     # Note the key boldmessage matches to {{ boldmessage }} in the template!
-    context_dict = {'boldmessage': 'This tutorial has been put together by Cool Dudes '}
+    context_dict['boldmessage'] = 'This tutorial has been put together by Cool Dudes '
+    
+    
     # Return a rendered response to send to the client.
     # We make use of the shortcut function to make our lives easier.
     # Note that the first parameter is the template we wish to use.

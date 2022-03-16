@@ -14,8 +14,19 @@
 		</div>
 		<div>
 			
-			<img src="{% static 'images/UKFlag.jpg' %}" alt="Picture of UK Flag" /> <!-- New line -->
-			<img src="{{ MEDIA_URL }}UkraineFlag.jpg" alt="Picture of Ukraine Flag" /> <!-- New line -->
+			{% if Reviews %}
+			<br>
+			<strong>Here are your reviews, {{ user.username }}.</strong>
+			<ul>
+				
+				{% for Review in Reviews %}
+				<li>Rating: {{ Review.Rating }} Price: {{ Review.Price }} Text: {{ Review.Text }}</</li>
+		
+				{% endfor %}
+			</ul>
+			{% else %}
+				<strong>No Reviews currently for {{ user.username }}.</strong>
+			{% endif %}
 		</div>
 		
 {% endblock %}
