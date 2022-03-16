@@ -29,6 +29,8 @@
 					<!-- Show these links when the user is logged in -->
 					
 					<li><a href="{% url 'UKCB:logout' %}">Logout</a></li>
+					<li><a href="{% url 'UKCB:MyAccount' %}">MyAccount</a></li>
+					Hello! {{ user.username }}
 					
 				{% else %}
 					<!-- Show these links when the user is NOT logged in -->

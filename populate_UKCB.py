@@ -5,7 +5,9 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 import django
 import random
 django.setup()
-from UKCB.models import City, Review
+from UKCB.models import City, Review, UserProfile
+from django.contrib.auth.models import User
+
 
 def populate():
     # First, we will create lists of dictionaries containing the pages
@@ -52,24 +54,48 @@ def populate():
     'Glasgow': {'Reviews': Glasgow_Reviews,'Tag':'Example Tag','Description':'Example Description'},
     'Newcastle upon Tyne': {'Reviews': Newcastle_upon_Tyne_Reviews,'Tag':'Example Tag','Description':'Example Description'} }
 
-
+    Users = [{'name':'Chump1','password':'password'},{'name':'Chump2','password':'password'},{'name':'Chump3','password':'password'},
+             {'name':'Chump4','password':'password'},{'name':'Chump5','password':'password'}]
+    
     # If you want to add more categories or pages,
     # add them to the dictionaries above.
 
+
+    
+    for u in Users:
+        add_user(u['name'], u['password'])
+
+    
+    
     # The code below goes through the cats dictionary, then adds each category,
     # and then adds all the associated pages for that category.
+    
     for city, city_data in Cities.items():
+        
         c = add_city(city,city_data['Tag'],city_data['Description'])
+        counter = 0
+        
         for r in city_data['Reviews']:
-           add_review(c, r['Rating'], r['Price'],r['text'])
 
-    # Print out the categories we have added.
+            if counter >= len(Users):
+                counter = 0
+                
+            user = Users[counter]['name']
+
+            counter += 1
+            
+            add_review(c, r['Rating'], r['Price'],r['text'],User.objects.get(username=user))
+           
+
+           
+    #Print out the categories we have added.
     for c in City.objects.all():
         for r in Review.objects.filter(City=c):
             print(f'- {c}: {r}')
 
-def add_review(city, rating, price, text):
-    r = Review.objects.get_or_create(City=city, Text = text)[0]
+def add_review(city, rating, price, text, writtenBy):
+    r = Review.objects.get_or_create(City=city, WrittenBy = writtenBy)[0]
+    r.Text = text
     r.Rating = rating
     r.Price = price
     
@@ -83,6 +109,14 @@ def add_city(name, tag, description):
     c.save()
     return c
 
+def add_user(name, password):
+    
+    if not User.objects.filter(username=name).exists():
+
+        User.objects.create_user(name,password = password)
+        
+    
+    return None
 
 # Start execution here!
 if __name__ == '__main__':

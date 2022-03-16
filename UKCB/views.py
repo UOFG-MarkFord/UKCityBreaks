@@ -75,7 +75,9 @@ def add_review(request, city_name_slug):
         city = City.objects.get(slug=city_name_slug)
     except City.DoesNotExist:
         city = None
-        
+
+    current_user = request.user
+    
     # You cannot add a page to a Category that does not exist...
     if city is None:
         return redirect('/UKCB/')
@@ -89,6 +91,7 @@ def add_review(request, city_name_slug):
            if city:
                 review = form.save(commit=False)
                 review.City = city
+                review.WrittenBy = current_user
                 
                 review.save()
                 return redirect(reverse('UKCB:show_city', kwargs={'city_name_slug':city_name_slug}))
@@ -197,3 +200,14 @@ def user_logout(request):
     logout(request)
     # Take the user back to the homepage.
     return redirect(reverse('UKCB:index'))
+
+@login_required
+def MyAccount(request):
+
+    # Construct a dictionary to pass to the template engine as its context.
+    # Note the key boldmessage matches to {{ boldmessage }} in the template!
+    context_dict = {'boldmessage': 'This tutorial has been put together by Cool Dudes '}
+    # Return a rendered response to send to the client.
+    # We make use of the shortcut function to make our lives easier.
+    # Note that the first parameter is the template we wish to use.
+    return render(request, 'UKCB/MyAccount.html', context=context_dict)

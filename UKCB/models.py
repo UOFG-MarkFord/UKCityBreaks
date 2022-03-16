@@ -1,6 +1,8 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from django.conf import settings
+
 
 class City(models.Model):
 
@@ -23,7 +25,10 @@ class City(models.Model):
 class Review(models.Model):
 
     ReviewID = models.AutoField(primary_key=True)   
-    City = models.ForeignKey(City, on_delete=models.CASCADE)   
+    City = models.ForeignKey(City, on_delete=models.CASCADE)
+    
+    WrittenBy = models.ForeignKey(User,default = None, on_delete=models.CASCADE)
+    
     Rating = models.IntegerField(default=0) 
     Price = models.IntegerField(default=0)
     Text = models.CharField(max_length=2048)

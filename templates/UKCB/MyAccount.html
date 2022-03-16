@@ -1,0 +1,21 @@
+{% extends 'UKCB/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	UKCityBreaks - AllCities
+{% endblock %}
+
+
+{% block body_block %}
+		<h1>All Cities</h1>
+		<div>
+			Here is the AllCities page <br />
+		<strong>{{ boldmessage }}</strong><br />
+		</div>
+		<div>
+			
+			<img src="{% static 'images/UKFlag.jpg' %}" alt="Picture of UK Flag" /> <!-- New line -->
+			<img src="{{ MEDIA_URL }}UkraineFlag.jpg" alt="Picture of Ukraine Flag" /> <!-- New line -->
+		</div>
+		
+{% endblock %}
