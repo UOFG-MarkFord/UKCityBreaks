@@ -24,7 +24,6 @@ def index(request):
             names.append(name.Name)
         return JsonResponse(names, safe = False)
 
-    city_list = City.objects.order_by('-Name')[:5]
     
     city_list = City.objects.annotate(average_rating = Avg('review__Rating')).order_by('-average_rating')[:5]
     most_popular = City.objects.annotate(num_reviews=Count('review')).order_by('-num_reviews')[:5]
