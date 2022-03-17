@@ -28,6 +28,8 @@ def populate():
      'text':'I Can Not Live without London'},]
 
 
+
+
     Glasgow_Reviews = [
     {'Rating': 5,
     'Price':5,
@@ -50,9 +52,34 @@ def populate():
     'Price':5,
      'text':'I Can Not Live without Newcastle upon Tyne'},]
 
+    Newport_Reviews = [
+    {'Rating': 5,
+    'Price':5,
+     'text':'I Love Newport'},
+    {'Rating': 5,
+    'Price':5,
+     'text':'I Really Love Newport'},
+    {'Rating': 5,
+    'Price':5,
+     'text':'I Can Not Live without Newport'},]
+
+    Newry_Reviews = [
+    {'Rating': 5,
+    'Price':5,
+     'text':'I Love Newry'},
+    {'Rating': 5,
+    'Price':5,
+     'text':'I Really Love Newry'},
+    {'Rating': 5,
+    'Price':5,
+     'text':'I Can Not Live without Newry'},]
+
+
     Cities = {'London': {'Reviews': London_Reviews,'Tag':'Example Tag','Description':'Example Description'},
     'Glasgow': {'Reviews': Glasgow_Reviews,'Tag':'Example Tag','Description':'Example Description'},
-    'Newcastle upon Tyne': {'Reviews': Newcastle_upon_Tyne_Reviews,'Tag':'Example Tag','Description':'Example Description'} }
+    'Newcastle upon Tyne': {'Reviews': Newcastle_upon_Tyne_Reviews,'Tag':'Example Tag','Description':'Example Description'},
+    'Newport': {'Reviews': Newport_Reviews,'Tag':'Example Tag','Description':'Example Description'},
+    'Newry': {'Reviews': Newry_Reviews,'Tag':'Example Tag','Description':'Example Description'} }
 
     Users = [{'name':'Chump1','password':'password'},{'name':'Chump2','password':'password'},{'name':'Chump3','password':'password'},
              {'name':'Chump4','password':'password'},{'name':'Chump5','password':'password'}]

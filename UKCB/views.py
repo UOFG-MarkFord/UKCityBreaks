@@ -8,19 +8,36 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from UKCB.forms import UserForm
 from django.contrib.auth.decorators import login_required
-
+from django.http import JsonResponse
+from django.db.models import Count
+from django.db import models
+from django.db.models import Avg
 
 # Create your views here.
 
 def index(request):
 
+    if 'term' in request.GET:
+        qs = City.objects.filter(Name__istartswith = request.GET.get('term'))
+        names =  list()
+        for name in qs:
+            names.append(name.Name)
+        return JsonResponse(names, safe = False)
+
     city_list = City.objects.order_by('-Name')[:5]
     
-    context_dict = {}
-
+    city_list = City.objects.annotate(average_rating = Avg('review__Rating')).order_by('-average_rating')[:5]
+    most_popular = City.objects.annotate(num_reviews=Count('review')).order_by('-num_reviews')[:5]
     
-    context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
+    
+    
+    
+    context_dict = {}
+    
+    
+    
     context_dict['cities'] = city_list
+    context_dict['popCities'] = most_popular
     
     return render(request, 'UKCB/index.html', context=context_dict)
 
@@ -35,10 +52,16 @@ def AllCities(request):
     return render(request, 'UKCB/AllCities.html', context=context_dict)
 
    
-def show_city(request, city_name_slug):
+def show_city(request, city_name_slug ):
     # Create a context dictionary which we can pass
     # to the template rendering engine.
+    
     context_dict = {}
+   
+    searched = request.POST.get('searched', False)
+    
+    if searched:
+        city_name_slug = searched.replace(' ','-').lower()
     
     try:
         # Can we find a category name slug with the given name?

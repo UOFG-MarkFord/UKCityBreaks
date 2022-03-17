@@ -9,38 +9,70 @@
 {% block body_block %}
 
 		<h1>UKCityBreaks</h1>
-		<div>
-		
-		hey there partner!
-		
 		<br>
-		<strong>{{ boldmessage }}</strong><br />
-		</div>
-		<div>
-			{% if cities %}
-				<ul>
-				{% for city in cities %}
-				
-					<li>
-					<!-- The following line is changed to add an HTML hyperlink -->
-					
-					
-						<a href="{% url 'UKCB:show_city' city.slug %}">{{ city.Name }}</a>
-						
-						
-					</li>
-
-				{% endfor %}
-				</ul>
-			{% else %}
-				<strong>There are no cities present.</strong>
-			{% endif %}
-		</div>
-		<div>
+		<br>
+		<br>
 		
-			<a href="{% url 'UKCB:AllCities' %}">All Cities</a>
-			<br>
+		
+		
+		
+		{% if cities %}
+			<div class="container">
+			  <div class="row">
+				<div class="col">
+					<h5>Top Cities as Rated by Users:</h5>
+				    {% for city in cities %}
+						<li>
+							
+							<a>{{city.Name}}</a>
+						</li>
+					{% endfor %}
+				</div>
+				<div class="col">
+					<br>
+					<div class="container-sm" >
+							<form class="d-flex" method = POST action = "{% url 'UKCB:show_city' 'CityPage' %}">
+							{% csrf_token %}
+							<input class="form-control me-2" id ="Search" type="search" placeholder="Search" aria-label="Search" name = "searched" >
+							<button class="btn btn-outline-success" type="submit">Search</button>
+							</form>
+					
+						<br>
+						<br>
+						<br>
+						<div class="text-center">
+							<a href="{% url 'UKCB:AllCities' %}" class="btn btn-outline-secondary" role="button">All Cities</a>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<h5>Most Popular Cities With Users:</h5>
+					{% for city in popCities %}
+						<li>
+							
+							<a>{{city.Name}}</a>
+						</li>
+					{% endfor %}
+				</div>
+			  </div>
+			</div>
+		
+		{% else %}
+					<strong>There are no cities present.</strong>
+		{% endif %}
+		
+		
+		
+		
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+		
+		<script>
+		  $( function() {
 			
-			<img src="{% static 'images/UKFlag.jpg' %}" alt="Picture of UK Flag" /> <!-- New line -->
-		</div>
+			$( "#Search" ).autocomplete({
+			  source: "{% url 'UKCB:index' %}"
+			});
+		  } );
+		 </script>
 {% endblock %}
