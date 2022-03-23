@@ -1,4 +1,3 @@
-
 {% extends 'UKCB/base.html' %}
 {% load staticfiles %}
 
@@ -9,20 +8,29 @@
 {% block body_block %}
 
 		<h1>Add Review</h1><br/>
+		<div class="row">
+			<div class="col-5 align-self-start">
+				<img src="{{ MEDIA_URL }}{{City.Name}}.jpg" alt="Picture of {{City.Name}}"
+				width="300" height="300"/>
+			</div>
+			<div class="col-7 align-self-start">
+				<div class="container-sm">
+					<form class="d-flex" id="review_form" method="POST" action="{% url 'UKCB:add_review' city.slug %}">
+						{% csrf_token %}
+						{% for hidden in form.hidden_fields %}
+							{{ hidden }}
+						{% endfor %}
 
-		<form id="review_form" method="POST" action="{% url 'UKCB:add_review' city.slug %}">
-		{% csrf_token %}
-		{% for hidden in form.hidden_fields %}
-			{{ hidden }}
-		{% endfor %}
+						{% for field in form.visible_fields %}
+							{{ field.errors }}
+							{{ field.help_text }}
+							{{ field }}
+						{% endfor %}
 
-		{% for field in form.visible_fields %}
-			{{ field.errors }}
-			{{ field.help_text }}
-			{{ field }}
-		{% endfor %}
-
-		<input type="submit" name="submit" value="Create Review" />
-	</form>
+						<input type="submit" name="submit" value="Create Review" />
+					</form>
+				</div>
+			</div>
+		</div>
 	
 {% endblock %}

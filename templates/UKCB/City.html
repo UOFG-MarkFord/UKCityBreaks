@@ -16,11 +16,11 @@
 		<h1>{{ City.Name }}</h1>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-4 align-self-start">
-					<img src="{{ MEDIA_URL }}glasgow.jpg" alt="Picture of Glasgow"
-					width="300" height="300"/>
+				<div class="col-5 align-self-start">
+					<img src="{{ MEDIA_URL }}{{City.Name}}.jpg" alt="Picture of {{City.Name}}"
+					width="100%" height="100%"/>
 				</div>
-				<div class="col-8 align-self-start">
+				<div class="col-7 align-self-start">
 					<div class="row">
 						Description:
 						<br/><br/>
@@ -38,7 +38,7 @@
 			<br/>
 
 			<div class="row">
-				<div class="col-4 align-self-start">
+				<div class="col-5 align-self-start">
 					Rating:
 					<br/>
 					Price:
@@ -48,7 +48,7 @@
 						<a href="{% url 'UKCB:add_review' City.slug %}" class="btn btn-outline-secondary">Write a Review</a>
 					{% endif %}
 				</div>
-				<div class="col-8 align-self-start">
+				<div class="col-7 align-self-start">
 					{% if Reviews %}
 						<ul class="list-group">
 							<li class="list-group-item">
