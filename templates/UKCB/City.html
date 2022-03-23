@@ -14,21 +14,58 @@
 	
 	{% if City %}
 		<h1>{{ City.Name }}</h1>
-		{% if Reviews %}
-			<ul>
-				{% for Review in Reviews %}
-				<li>Rating: {{ Review.Rating }} Price: {{ Review.Price }} Text: {{ Review.Text }}</</li>
-		
-				{% endfor %}
-			</ul>
-		{% else %}
-			<strong>No Reviews currently for city.</strong>
-		{% endif %}
-		
-		{% if user.is_authenticated %}	
-			<a href="{% url 'UKCB:add_review' City.slug %}">Add Review</a>
-		{% endif %}
-		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-4 align-self-start">
+					<img src="{{ MEDIA_URL }}glasgow.jpg" alt="Picture of Glasgow"
+					width="300" height="300"/>
+				</div>
+				<div class="col-8 align-self-start">
+					<div class="row">
+						Description:
+						<br/><br/>
+						{{City.Description}}
+					</div>
+					<br/><br/>
+					<div class="row">
+						Tags:
+						<br/><br/>
+						{{City.Tag}}
+					</div>
+				</div>
+			</div>
+
+			<br/>
+
+			<div class="row">
+				<div class="col-4 align-self-start">
+					Rating:
+					<br/>
+					Price:
+					<br/>
+					<br/>
+					{% if user.is_authenticated %}	
+						<a href="{% url 'UKCB:add_review' City.slug %}" class="btn btn-outline-secondary">Write a Review</a>
+					{% endif %}
+				</div>
+				<div class="col-8 align-self-start">
+					{% if Reviews %}
+						<ul class="list-group">
+							<li class="list-group-item">
+								User Reviews
+							</li>
+							<li class="list-group-item">
+								{% for Review in Reviews %}
+								{{ Review.Text }} (Rating: {{ Review.Rating }} Price: {{ Review.Price }})<br/>
+							{% endfor %}
+							</li>
+						</ul>
+					{% else %}
+						<strong>No Reviews currently for city.</strong>
+					{% endif %}
+				</div>
+			</div>
+		</div>
 	{% else %}
 		The specified city does not exist.
 	{% endif %}
