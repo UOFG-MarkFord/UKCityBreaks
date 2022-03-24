@@ -11,10 +11,9 @@
 		
 		
 		<div class="container">
-		<h1 style=font-size:43px><img src="{% static 'images/UK.jpg' %}" alt="Picture of UK Flag" width = "100" height = "38" />CityBreaks</h1>
+			<img src="{% static 'images/UKCityBreaksLogo.jpg' %}" alt="Picture of UK Flag" width = "200" />
 		</div>
-		<br>
-		<br>
+		
 		
 		
 		{% if cities %}
@@ -84,6 +83,7 @@
 					
 				</div>
 				<div class="col">
+					<br>
 					<br>
 					<div class="container-sm" >
 							<form class="d-flex" method = POST action = "{% url 'UKCB:show_city' 'CityPage' %}">
