@@ -13,20 +13,23 @@
 				<img src="{{ MEDIA_URL }}{{city}}.jpg" alt="Picture of {{city}}"
 				width="300" height="300"/>
 			</div>
-			<div class="col-7 align-self-start">
-				<div class="container-sm">
-					<form class="d-flex" id="review_form" method="POST" action="{% url 'UKCB:add_review' city.slug %}">
+			<div class="col-7 align-self-start">	
+				<div class="container-sm">	
+				<h1>{{ city.Name }}</h1>				
+					<form class="form-group" id="review_form" method="POST" action="{% url 'UKCB:add_review' city.slug %}">
 						{% csrf_token %}
 						{% for hidden in form.hidden_fields %}
 							{{ hidden }}
 						{% endfor %}
-
 						{% for field in form.visible_fields %}
+						<div class="row">
 							{{ field.errors }}
 							{{ field.help_text }}
 							{{ field }}
+						</div>
+						<br/>
 						{% endfor %}
-
+						<br/>
 						<input type="submit" name="submit" value="Create Review" />
 					</form>
 				</div>
