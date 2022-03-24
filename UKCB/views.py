@@ -43,6 +43,18 @@ def AllCities(request):
     # Return a rendered response to send to the client.
     # We make use of the shortcut function to make our lives easier.
     # Note that the first parameter is the template we wish to use.
+    city_list = City.objects.annotate(average_rating = Avg('review__Rating')).order_by('-average_rating')
+    Rating = Review.objects.annotate(average_rating = Avg('Rating')).order_by('-average_rating')
+    Price = Review.objects.annotate(average_rating = Avg('Price')).order_by('average_rating')
+    most_popular = City.objects.annotate(num_reviews=Count('review')).order_by('-num_reviews')
+    
+    
+    
+    context_dict['cities'] = list(city_list)
+    context_dict['rating'] = list(Rating)
+    context_dict['prices'] = list(Price)
+    context_dict['popCities'] = list(most_popular)
+    
     return render(request, 'UKCB/AllCities.html', context=context_dict)
 
    
