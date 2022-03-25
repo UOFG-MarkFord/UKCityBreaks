@@ -5,150 +5,163 @@
 	UKCityBreaks - AllCities
 {% endblock %}
 
-
 {% block body_block %}
-		<h1>All Cities</h1>
-		<div>
-			Here is the AllCities page <br />
-		<strong>{{ boldmessage }}</strong><br />
-		</div>
-		<div>
-			
-			<img src="{% static 'images/UKFlag.jpg' %}" alt="Picture of UK Flag" /> <!-- New line -->
-			<img src="{{ MEDIA_URL }}UkraineFlag.jpg" alt="Picture of Ukraine Flag" /> <!-- New line -->
-		</div>
+    <div class="container">
+      <img src="{% static 'images/UKCityBreaksLogo.png' %}" alt="Picture of UK Flag" height =  100vh;/>
+    </div>
 
+    <br/>
 		
-		
-		
-		<div class="container">          
-			<table class="table table-bordered" >
-				<thead>
-					<tr>
-						<th>City Name</th>
-						<th>User City Ratings</th>
-						<th>City Prices</th>
-						<th>City Popularity</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><p style=font-size:20px>{{cities.0}}</p></td>
-						<td><p style=font-size:20px>{{rating.0}}</td>
-						<td><p style=font-size:20px>{{prices.0}}</td>
-						<td><p style=font-size:20px>{{popCities.0}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.1}}</p></td>
-						<td><p style=font-size:20px>{{rating.1}}</td>
-						<td><p style=font-size:20px>{{prices.1}}</td>
-						<td><p style=font-size:20px>{{popCities.1}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.2}}</p></td>
-						<td><p style=font-size:20px>{{rating.2}}</td>
-						<td><p style=font-size:20px>{{prices.2}}</td>
-						<td><p style=font-size:20px>{{popCities.2}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.3}}</p></td>
-						<td><p style=font-size:20px>{{rating.3}}</td>
-						<td><p style=font-size:20px>{{prices.3}}</td>
-						<td><p style=font-size:20px>{{popCities.3}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.4}}</p></td>
-						<td><p style=font-size:20px>{{rating.4}}</td>
-						<td><p style=font-size:20px>{{prices.4}}</td>
-						<td><p style=font-size:20px>{{popCities.4}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.5}}</p></td>
-						<td><p style=font-size:20px>{{rating.5}}</td>
-						<td><p style=font-size:20px>{{prices.5}}</td>
-						<td><p style=font-size:20px>{{popCities.5}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.6}}</p></td>
-						<td><p style=font-size:20px>{{rating.6}}</td>
-						<td><p style=font-size:20px>{{prices.6}}</td>
-						<td><p style=font-size:20px>{{popCities.6}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.7}}</p></td>
-						<td><p style=font-size:20px>{{rating.7}}</td>
-						<td><p style=font-size:20px>{{prices.7}}</td>
-						<td><p style=font-size:20px>{{popCities.7}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.8}}</p></td>
-						<td><p style=font-size:20px>{{rating.8}}</td>
-						<td><p style=font-size:20px>{{prices.8}}</td>
-						<td><p style=font-size:20px>{{popCities.8}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.9}}</p></td>
-						<td><p style=font-size:20px>{{rating.9}}</td>
-						<td><p style=font-size:20px>{{prices.9}}</td>
-						<td><p style=font-size:20px>{{popCities.9}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.10}}</p></td>
-						<td><p style=font-size:20px>{{rating.10}}</td>
-						<td><p style=font-size:20px>{{prices.10}}</td>
-						<td><p style=font-size:20px>{{popCities.10}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.11}}</p></td>
-						<td><p style=font-size:20px>{{rating.11}}</td>
-						<td><p style=font-size:20px>{{prices.11}}</td>
-						<td><p style=font-size:20px>{{popCities.11}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.12}}</p></td>
-						<td><p style=font-size:20px>{{rating.12}}</td>
-						<td><p style=font-size:20px>{{prices.12}}</td>
-						<td><p style=font-size:20px>{{popCities.12}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.13}}</p></td>
-						<td><p style=font-size:20px>{{rating.13}}</td>
-						<td><p style=font-size:20px>{{prices.13}}</td>
-						<td><p style=font-size:20px>{{popCities.13}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.14}}</p></td>
-						<td><p style=font-size:20px>{{rating.14}}</td>
-						<td><p style=font-size:20px>{{prices.14}}</td>
-						<td><p style=font-size:20px>{{popCities.14}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.15}}</p></td>
-						<td><p style=font-size:20px>{{rating.0}}</td>
-						<td><p style=font-size:20px>{{prices.0}}</td>
-						<td><p style=font-size:20px>{{popCities.15}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.16}}</p></td>
-						<td><p style=font-size:20px>{{rating.0}}</td>
-						<td><p style=font-size:20px>{{prices.0}}</td>
-						<td><p style=font-size:20px>{{popCities.16}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.17}}</p></td>
-						<td><p style=font-size:20px>{{rating.0}}</td>
-						<td><p style=font-size:20px>{{prices.0}}</td>
-						<td><p style=font-size:20px>{{popCities.17}}</td>
-					</tr>
-					<tr>
-						<td><p style=font-size:20px>{{cities.18}}</p></td>
-						<td><p style=font-size:20px>{{rating.0}}</td>
-						<td><p style=font-size:20px>{{prices.0}}</td>
-						<td><p style=font-size:20px>{{popCities.18}}</td>
-					</tr>
-							
-				</tbody>
-			</table>
+		<div class="container-fluid">
+      <div class="row">  
+        <div class="col-4">
+          <div id="googleMap" style="width:100%;height:300px;"></div>
+
+          <script>
+            function myMap() {
+            var mapProp = {
+              center:new google.maps.LatLng(54.5,-4.5),
+              zoom:5,
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+            }
+            var marker = new google.maps.Marker({position: center, map:map})
+          </script>
+
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEbHUH88TIo-BFMj7Gwb5A3GNSCSF-Qk4&callback=myMap" async defer>
+          </script>
+
+        </div>
+        <div class="col-8">
+    		 	<table class="table table-bordered">
+    				<thead>
+    					<tr>
+    						<th>City Name</th>
+    						<th>User City Ratings</th>
+    						<th>City Prices</th>
+    						<th>City Popularity</th>
+    					</tr>
+    				</thead>
+    				<tbody>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.0}}</p></td>
+    						<td><p style=font-size:20px>{{rating.0}}</td>
+    						<td><p style=font-size:20px>{{prices.0}}</td>
+    						<td><p style=font-size:20px>{{popCities.0}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.1}}</p></td>
+    						<td><p style=font-size:20px>{{rating.1}}</td>
+    						<td><p style=font-size:20px>{{prices.1}}</td>
+    						<td><p style=font-size:20px>{{popCities.1}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.2}}</p></td>
+    						<td><p style=font-size:20px>{{rating.2}}</td>
+    						<td><p style=font-size:20px>{{prices.2}}</td>
+    						<td><p style=font-size:20px>{{popCities.2}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.3}}</p></td>
+    						<td><p style=font-size:20px>{{rating.3}}</td>
+    						<td><p style=font-size:20px>{{prices.3}}</td>
+    						<td><p style=font-size:20px>{{popCities.3}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.4}}</p></td>
+    						<td><p style=font-size:20px>{{rating.4}}</td>
+    						<td><p style=font-size:20px>{{prices.4}}</td>
+    						<td><p style=font-size:20px>{{popCities.4}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.5}}</p></td>
+    						<td><p style=font-size:20px>{{rating.5}}</td>
+    						<td><p style=font-size:20px>{{prices.5}}</td>
+    						<td><p style=font-size:20px>{{popCities.5}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.6}}</p></td>
+    						<td><p style=font-size:20px>{{rating.6}}</td>
+    						<td><p style=font-size:20px>{{prices.6}}</td>
+    						<td><p style=font-size:20px>{{popCities.6}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.7}}</p></td>
+    						<td><p style=font-size:20px>{{rating.7}}</td>
+    						<td><p style=font-size:20px>{{prices.7}}</td>
+    						<td><p style=font-size:20px>{{popCities.7}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.8}}</p></td>
+    						<td><p style=font-size:20px>{{rating.8}}</td>
+    						<td><p style=font-size:20px>{{prices.8}}</td>
+    						<td><p style=font-size:20px>{{popCities.8}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.9}}</p></td>
+    						<td><p style=font-size:20px>{{rating.9}}</td>
+    						<td><p style=font-size:20px>{{prices.9}}</td>
+    						<td><p style=font-size:20px>{{popCities.9}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.10}}</p></td>
+    						<td><p style=font-size:20px>{{rating.10}}</td>
+    						<td><p style=font-size:20px>{{prices.10}}</td>
+    						<td><p style=font-size:20px>{{popCities.10}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.11}}</p></td>
+    						<td><p style=font-size:20px>{{rating.11}}</td>
+    						<td><p style=font-size:20px>{{prices.11}}</td>
+    						<td><p style=font-size:20px>{{popCities.11}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.12}}</p></td>
+    						<td><p style=font-size:20px>{{rating.12}}</td>
+    						<td><p style=font-size:20px>{{prices.12}}</td>
+    						<td><p style=font-size:20px>{{popCities.12}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.13}}</p></td>
+    						<td><p style=font-size:20px>{{rating.13}}</td>
+    						<td><p style=font-size:20px>{{prices.13}}</td>
+    						<td><p style=font-size:20px>{{popCities.13}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.14}}</p></td>
+    						<td><p style=font-size:20px>{{rating.14}}</td>
+    						<td><p style=font-size:20px>{{prices.14}}</td>
+    						<td><p style=font-size:20px>{{popCities.14}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.15}}</p></td>
+    						<td><p style=font-size:20px>{{rating.0}}</td>
+    						<td><p style=font-size:20px>{{prices.0}}</td>
+    						<td><p style=font-size:20px>{{popCities.15}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.16}}</p></td>
+    						<td><p style=font-size:20px>{{rating.0}}</td>
+    						<td><p style=font-size:20px>{{prices.0}}</td>
+    						<td><p style=font-size:20px>{{popCities.16}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.17}}</p></td>
+    						<td><p style=font-size:20px>{{rating.0}}</td>
+    						<td><p style=font-size:20px>{{prices.0}}</td>
+    						<td><p style=font-size:20px>{{popCities.17}}</td>
+    					</tr>
+    					<tr>
+    						<td><p style=font-size:20px>{{cities.18}}</p></td>
+    						<td><p style=font-size:20px>{{rating.0}}</td>
+    						<td><p style=font-size:20px>{{prices.0}}</td>
+    						<td><p style=font-size:20px>{{popCities.18}}</td>
+    					</tr>
+    							
+    				</tbody>
+    			</table>
+        </div>
+      </div>
 		</div>
 		
 		
