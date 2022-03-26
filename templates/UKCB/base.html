@@ -22,6 +22,8 @@
 	
 	<link rel ="stylesheet" href = "{%static 'css/BaseStyle.css'%}">
 	
+	<script src = "{%static 'javascript/main.js'%}" defer></script>
+	
 	
 	
 	<div class="bg-image" 
@@ -108,14 +110,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 		
-	<script>
-	  $( function() {
-		
-		$( "#Search" ).autocomplete({
-		  source: "{% url 'UKCB:index' %}"
-		});
-	  } );
-	 </script>
+
   
   
 </html>
