@@ -21,6 +21,7 @@
             function myMap() {
             var mapProp = {
               center:new google.maps.LatLng(54.5,-4.5),
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
               zoom:5,
             };
             var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
@@ -28,7 +29,7 @@
             var marker = new google.maps.Marker({position: center, map:map})
           </script>
 
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEbHUH88TIo-BFMj7Gwb5A3GNSCSF-Qk4&callback=myMap" async defer>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpHLFzKwMgkmNBSAEgT01J8A6SUG2gNx8&callback=myMap" async defer>
           </script>
 
         </div>
