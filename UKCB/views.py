@@ -15,6 +15,7 @@ from django.db import models
 from django.db.models import Avg
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.db.models import Func
 
 # Create your views here.
 
@@ -33,31 +34,23 @@ def index(request):
     
     context_dict = {}
     
-    context_dict['cities'] = list(city_list)
+    context_dict['cities'] = city_list
     context_dict['popCities'] = most_popular
     
     return render(request, 'UKCB/index.html', context=context_dict)
 
 def AllCities(request):
 
-    # Construct a dictionary to pass to the template engine as its context.
-    # Note the key boldmessage matches to {{ boldmessage }} in the template!
-    context_dict = {'boldmessage': 'This tutorial has been put together by WAD2 Team 14D '}
-    # Return a rendered response to send to the client.
-    # We make use of the shortcut function to make our lives easier.
-    # Note that the first parameter is the template we wish to use.
-    city_list = City.objects.annotate(average_rating = Avg('review__Rating')).order_by('-average_rating')
-    Rating = Review.objects.annotate(average_rating = Avg('Rating')).order_by('-average_rating')
-    Price = Review.objects.annotate(average_rating = Avg('Price')).order_by('average_rating')
-    most_popular = City.objects.annotate(num_reviews=Count('review')).order_by('-num_reviews')
+    context_dict ={}
+
+    class Round(Func):
+        function = 'ROUND'
+        arity = 2
+  
+    city_list = City.objects.annotate(average_rating = Round(Avg('review__Rating'),2), average_price = Round(Avg('review__Price'),2),num_reviews=Count('review'))
     
-    
-    
-    context_dict['cities'] = list(city_list)
-    context_dict['rating'] = list(Rating)
-    context_dict['prices'] = list(Price)
-    context_dict['popCities'] = list(most_popular)
-    
+    context_dict['cities'] = city_list
+   
     return render(request, 'UKCB/AllCities.html', context=context_dict)
 
    
