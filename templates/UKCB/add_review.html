@@ -9,11 +9,11 @@
 
 		<h1>Add Review</h1><br/>
 		<div class="row">
-			<div class="col-5 align-self-start">
+			<div class="col-3 align-self-start">
 				<img src="{{ MEDIA_URL }}{{city}}.jpg" alt="Picture of {{city}}"
 				width="300" height="300"/>
 			</div>
-			<div class="col-7 align-self-start">	
+			<div class="col-9 align-self-start">	
 				<div class="container-sm">	
 				<h1>{{ city.Name }}</h1>				
 					<form class="form-group" id="review_form" method="POST" action="{% url 'UKCB:add_review' city.slug %}">
@@ -24,7 +24,7 @@
 						{% for field in form.visible_fields %}
 						<div class="row">
 							{{ field.errors }}
-							{{ field.help_text }}
+							{{ field.label }}
 							{{ field }}
 						</div>
 						<br/>

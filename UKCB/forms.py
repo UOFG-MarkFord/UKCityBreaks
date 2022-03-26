@@ -2,17 +2,21 @@ from django import forms
 from UKCB.models import Review
 from django.contrib.auth.models import User
 from UKCB.models import UserProfile
+from django.forms.widgets import RadioSelect
 
 class ReviewForm(forms.ModelForm):
 
+    Choices=[(1,1),
+             (2,2),
+             (3,3),
+             (4,4),
+             (5,5)]
 
-    Rating = forms.IntegerField(initial=0, help_text="Please enter a rating of the city.")
+    Rating = forms.IntegerField(label="Rating", widget=forms.RadioSelect(choices=Choices))
     
-    Price = forms.IntegerField(initial=0,
-    help_text="Please enter a price of the city.")
+    Price = forms.IntegerField(label="Price", widget=forms.RadioSelect(choices=Choices))
      
-    Text = forms.CharField(max_length=1028,
-    help_text="Please enter a review of the city.")
+    Text = forms.CharField(label="Review", max_length=1028)
     
 
     class Meta:
@@ -45,7 +49,3 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password',)
-
-
-
-        
