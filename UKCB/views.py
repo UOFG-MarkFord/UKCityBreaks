@@ -238,7 +238,7 @@ def MyAccount(request):
     context_dict['Reviews'] = review
     # Construct a dictionary to pass to the template engine as its context.
     # Note the key boldmessage matches to {{ boldmessage }} in the template!
-    context_dict['boldmessage'] = 'This tutorial has been put together by Cool Dudes '
+    
     
     
     # Return a rendered response to send to the client.
