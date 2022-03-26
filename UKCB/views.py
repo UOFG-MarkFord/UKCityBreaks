@@ -7,11 +7,14 @@ from UKCB.forms import ReviewForm
 from django.shortcuts import redirect
 from django.urls import reverse
 from UKCB.forms import UserForm
+from UKCB.forms import RegisterUserForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.db.models import Count
 from django.db import models
 from django.db.models import Avg
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -136,35 +139,28 @@ def register(request):
     # whether the registration was successful.
     # Set to False initially. Code changes value to
     # True when registration succeeds.
-    registered = False
+   
 
     # If it's a HTTP POST, we're interested in processing form data.
     if request.method == 'POST':
         # Attempt to grab information from the raw form information.
         # Note that we make use of both UserForm and UserProfileForm.
-        user_form = UserForm(request.POST)
+        user_form = RegisterUserForm(request.POST)
         
 
         # If the two forms are valid...
         if user_form.is_valid():
             # Save the user's form data to the database.
-            user = user_form.save()
+            user_form.save()
 
-            # Now we hash the password with the set_password method.
-            # Once hashed, we can update the user object.
-            user.set_password(user.password)
-            user.save()
+            username = user_form.cleaned_data['username']
+            password = user_form.cleaned_data['password1']
 
-            # Now sort out the UserProfile instance.
-            # Since we need to set the user attribute ourselves,
-            # we set commit=False. This delays saving the model
+            user = authenticate(username = username, password = password)
+            login(request, user)
+            messages.success(request, ("Registration Successful"))
+            return redirect('index')
 
-            # until we're ready to avoid integrity problems.
-           
-
-            # Update our variable to indicate that the template
-            # registration was successful.
-            registered = True
         else:
             # Invalid form or forms - mistakes or something else?
             # Print problems to the terminal.
@@ -172,14 +168,13 @@ def register(request):
     else:
         # Not a HTTP POST, so we render our form using two ModelForm instances.
         # These forms will be blank, ready for user input.
-        user_form = UserForm()
+        user_form = RegisterUserForm()
         
 
     # Render the template depending on the context.
     return render(request,
         'UKCB/register.html',
-        context = {'user_form': user_form,
-                'registered': registered})
+        context = {'user_form': user_form})
 
 def user_login(request):
     # If the request is a HTTP POST, try to pull out the relevant information.
