@@ -2,23 +2,15 @@
 {% load staticfiles %}
 
 {% block title_block %}
-	UKCityBreaks
+	Home
 {% endblock %}
 
 
 {% block body_block %}
 		
-		<style>h5 {
-		  
-		  white-space: nowrap;
-		}
-		
-
-			
-		</style>	
 		
 		<div class="container">
-			<img src="{% static 'images/UKCityBreaksLogo.png' %}" alt="Picture of UK Flag" height =  100vh;  />
+			<img src="{% static 'images/UKCityBreaksLogo.png' %}" alt="Picture of UKCB Logo" height =  100vh;  />
 		</div>
 		
 		
@@ -26,7 +18,7 @@
 		{% if cities %}
 			<div class="container">
 			  <div class="row">
-				<div class="col-md-3" style="max-width: 370px;">
+				<div class="col-md-4">
 					<div class="page-header">
 						<h5 >Top Cities as Rated by Users:</h1>
 					</div>
@@ -43,7 +35,7 @@
 								<img class="d-block w-100" src="{{ MEDIA_URL }}{{cities.0}}.jpg" alt="Picture of {{cities.0}}">
 								<div class="carousel-caption d-none d-md-block">
 									
-									<p style=font-size:20px>{{cities.0}}</p>
+									<p>{{cities.0}}</p>
 								</div>
 							</div>
 							<div class="carousel-item">
@@ -51,7 +43,7 @@
 								
 								<div class="carousel-caption d-none d-md-block">
 									
-									<p style=font-size:20px>{{cities.1}}</p>
+									<p>{{cities.1}}</p>
 								</div>
 							</div>
 							<div class="carousel-item">
@@ -59,7 +51,7 @@
 								
 								<div class="carousel-caption d-none d-md-block">
 									
-									<p style=font-size:20px>{{cities.2}}</p>
+									<p>{{cities.2}}</p>
 								</div>
 							</div>
 							<div class="carousel-item">
@@ -67,7 +59,7 @@
 								
 								<div class="carousel-caption d-none d-md-block">
 									
-									<p style=font-size:20px>{{cities.3}}</p>
+									<p>{{cities.3}}</p>
 								</div>
 							</div>
 							<div class="carousel-item">
@@ -75,7 +67,7 @@
 								
 								<div class="carousel-caption d-none d-md-block">
 									
-									<p style=font-size:20px>{{cities.4}}</p>
+									<p>{{cities.4}}</p>
 								</div>
 							</div>
 						</div>
@@ -96,7 +88,7 @@
 					<div class="container-sm" >
 							<form class="d-flex" method = POST action = "{% url 'UKCB:show_city' 'CityPage' %}">
 							{% csrf_token %}
-							<input class="form-control me-2" id ="Search" type="search" placeholder="Search" aria-label="Search" name = "searched" >
+							<input class="form-control me-2" id ="Search" type="search" placeholder="City Name" aria-label="Search" name = "searched" >
 							<button class="btn btn-outline-success" type="submit">Search</button>
 							</form>
 					
@@ -109,7 +101,7 @@
 						<br>
 					</div>
 				</div>
-				<div class="col-md-4 col-xs-12" style="max-width: 370px;" >
+				<div class="col-md-4 " >
 					<h5>Most Popular Cities With Users:</h5>
 					
 					<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
@@ -125,7 +117,7 @@
 								<img class="d-block w-100" src="{{ MEDIA_URL }}{{popCities.0}}.jpg" alt="Picture of {{popCities.0}}">
 								<div class="carousel-caption d-none d-md-block">
 									
-									<p style=font-size:20px>{{popCities.0}}</p>
+									<p>{{popCities.0}}</p>
 								</div>
 							</div>
 							<div class="carousel-item">
@@ -133,7 +125,7 @@
 								
 								<div class="carousel-caption d-none d-md-block">
 									
-									<p style=font-size:20px>{{popCities.1}}</p>
+									<p>{{popCities.1}}</p>
 								</div>
 							</div>
 							<div class="carousel-item">
@@ -141,7 +133,7 @@
 								
 								<div class="carousel-caption d-none d-md-block">
 									
-									<p style=font-size:20px>{{popCities.2}}</p>
+									<p>{{popCities.2}}</p>
 								</div>
 							</div>
 							<div class="carousel-item">
@@ -149,7 +141,7 @@
 								
 								<div class="carousel-caption d-none d-md-block">
 									
-									<p style=font-size:20px>{{popCities.3}}</p>
+									<p>{{popCities.3}}</p>
 								</div>
 							</div>
 							<div class="carousel-item">
@@ -157,7 +149,7 @@
 								
 								<div class="carousel-caption d-none d-md-block">
 									
-									<p style=font-size:20px>{{popCities.4}}</p>
+									<p>{{popCities.4}}</p>
 								</div>
 							</div>
 						</div>
@@ -182,15 +174,5 @@
 		
 		
 		
-		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 		
-		<script>
-		  $( function() {
-			
-			$( "#Search" ).autocomplete({
-			  source: "{% url 'UKCB:index' %}"
-			});
-		  } );
-		 </script>
 {% endblock %}
