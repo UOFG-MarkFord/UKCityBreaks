@@ -7,13 +7,18 @@
 
 {% block body_block %}
 <h1>Register for UKCityBreaks</h1>
-{% if registered %}
-UKCityBreaks says: <strong>thank you for registering!</strong>
-<a href="{% url 'UKCB:index' %}">Return to the homepage.</a><br />
-{% else %}
-UKCityBreaks says: <strong>register here!</strong><br />
-<form id="user_form" method="post" action="{% url 'UKCB:register' %}"
-	enctype="multipart/form-data">
+
+
+{% if user_form.errors %}
+
+
+<div class = "alert alert-warning alert-dismissible fade show" role = "alert"> There was an error with your form.. 
+<button type ="button" class ="btn-close" data-bs-dismiss = "alert" aria-label ="close"></button> 
+</div>
+{% endif %}
+
+UKCityBreaks: <strong>register here!</strong><br />
+<form id="user_form" method="post" action="{% url 'UKCB:register' %}" enctype="multipart/form-data">
 
 	{% csrf_token %}
 
@@ -24,5 +29,5 @@ UKCityBreaks says: <strong>register here!</strong><br />
 	<!-- Provide a button to click to submit the form. -->
 	<input type="submit" name="submit" value="Register" />
 </form>
-{% endif %}
+
 {% endblock %}
