@@ -1,3 +1,12 @@
-django=2.2.26
-django-registration-redux=2.2
-pillow=6.2.0
+-f /usr/share/pip-wheels
+certifi==2021.10.8
+charset-normalizer==2.0.12
+coverage==6.3.2
+Django==2.2.26
+django-registration-redux==2.2
+idna==3.3
+Pillow==9.0.0
+pytz==2022.1
+requests==2.27.1
+sqlparse==0.4.2
+urllib3==1.26.9
