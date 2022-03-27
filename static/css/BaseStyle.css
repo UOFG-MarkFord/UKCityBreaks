@@ -20,3 +20,30 @@ h5 {
 
   white-space: nowrap;
 }
+
+.bg-image{
+	
+	background-size:cover;
+	
+}
+
+.checked {
+  color: orange;
+}
+
+.my-starbtn {
+	
+	background-color:inherit !important;
+	border:0 !important;
+	
+}
+
+.poundYes {
+      color: green;
+	  font-size: 18px;
+   }
+   
+.poundNo {
+      
+	  font-size: 18px;
+   }

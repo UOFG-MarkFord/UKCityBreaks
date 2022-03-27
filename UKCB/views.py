@@ -19,6 +19,10 @@ from django.db.models import Func
 
 # Create your views here.
 
+class Round(Func):
+        function = 'ROUND'
+        arity = 2
+
 def index(request):
 
     if 'term' in request.GET:
@@ -43,11 +47,11 @@ def AllCities(request):
 
     context_dict ={}
 
-    class Round(Func):
-        function = 'ROUND'
-        arity = 2
+    
   
     city_list = City.objects.annotate(average_rating = Round(Avg('review__Rating'),2), average_price = Round(Avg('review__Price'),2),num_reviews=Count('review'))
+    
+   
     
     context_dict['cities'] = city_list
    
@@ -57,6 +61,8 @@ def AllCities(request):
 def show_city(request, city_name_slug ):
     # Create a context dictionary which we can pass
     # to the template rendering engine.
+
+   
     
     context_dict = {}
    
@@ -74,8 +80,13 @@ def show_city(request, city_name_slug ):
         # Retrieve all of the associated pages.
         # The filter() will return a list of page objects or an empty list.
         review = Review.objects.filter(City=city)
+
+        AveragePrice = Review.objects.filter(City=city).aggregate(Avg('Price'))
+        AverageRating = Review.objects.filter(City=city).aggregate(Avg('Rating'))
         
         # Adds our results list to the template context under name pages.
+        context_dict['CityRating'] = AverageRating
+        context_dict['CityPrice'] = AveragePrice
         context_dict['Reviews'] = review
         # We also add the category object from
         # the database to the context dictionary.

@@ -4,23 +4,24 @@ from django.contrib.auth.models import User
 from UKCB.models import UserProfile
 from django.forms.widgets import RadioSelect
 from django.contrib.auth.forms import UserCreationForm
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 class ReviewForm(forms.ModelForm):
 
-    Choices=[(1,1),
-             (2,2),
-             (3,3),
-             (4,4),
-             (5,5)]
-
-    Rating = forms.IntegerField(label="Rating", widget=forms.RadioSelect(choices=Choices))
     
-    Price = forms.IntegerField(label="Price", widget=forms.RadioSelect(choices=Choices))
-     
-    Text = forms.CharField(label="Review", max_length=1028)
+
+   
+
+    Rating = forms.IntegerField( label="Rating", max_value = 5, min_value =0)
+    
+    Price = forms.IntegerField(label="Price", max_value = 5, min_value =0)
+    Text = forms.CharField(label="Review", max_length=100, widget=forms.Textarea(attrs={'name':'body', 'rows':'3', 'cols':'5'}))
     
 
     class Meta:
+
+    
         # Provide an association between the ModelForm and a model
         model = Review
 

@@ -9,21 +9,34 @@
 
 		<h1>Add Review</h1><br/>
 		<div class="row">
-			<div class="col-3 align-self-start">
+			<div class="col-md-5">
+			
+			<h5>{{ city.Name }}:</h5>
 				<img src="{{ MEDIA_URL }}{{city}}.jpg" alt="Picture of {{city}}"
 				width="300" height="300"/>
 			</div>
-			<div class="col-9 align-self-start">	
-				<div class="container-sm">	
-				<h1>{{ city.Name }}</h1>				
+			<br>
+			
+			<div class="col-md-5">	
+				<div class="container">	
+				
+				
+							
+				
+					<br>
 					<form class="form-group" id="review_form" method="POST" action="{% url 'UKCB:add_review' city.slug %}">
 						{% csrf_token %}
+						
+		
+						
 						{% for hidden in form.hidden_fields %}
 							{{ hidden }}
 						{% endfor %}
 						{% for field in form.visible_fields %}
 						<div class="row">
-							{{ field.errors }}
+						
+							
+							
 							{{ field.label }}
 							{{ field }}
 						</div>

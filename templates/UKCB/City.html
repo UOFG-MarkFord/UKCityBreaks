@@ -21,8 +21,39 @@
 					width="100%" >
 					
 					<h5>Rating:</h5>
+					
+					{% for i in '01234'|make_list %}
+					
+						{% if CityRating.Rating__avg >=  forloop.counter %}
+							<span class="fa fa-star checked"></span>
+						{% else %}
+							<span class="fa fa-star"></span>
+						
+						{% endif %}
+							
+							
+					{% endfor %}
+					
+
 					<br>
 					<h5>Price:</h5>
+					
+					
+					{% for i in '01234'|make_list %}
+					
+						
+					
+						{% if CityPrice.Price__avg >=  forloop.counter %}
+							<span class="poundYes">£</span>
+						{% else %}
+							<span class="poundNo">£</span>
+						
+						{% endif %}
+							
+							
+					{% endfor %}
+					
+					<br>
 					<br>
 					
 					{% if user.is_authenticated %}	
