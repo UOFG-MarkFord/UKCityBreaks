@@ -29,7 +29,7 @@ SECRET_KEY = '_av$(6t8@jzo5*j5b%j-+%qbnv4^j_5xh#0e)5y=v6c@#==9%%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['DeclanWong.pythonanywhere.com']
+ALLOWED_HOSTS = ['DeclanWong.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
