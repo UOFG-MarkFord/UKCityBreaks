@@ -216,10 +216,7 @@ def populate():
            
 
            
-    #Print out the categories we have added.
-    for c in City.objects.all():
-        for r in Review.objects.filter(City=c):
-            print(f'- {c}: {r}')
+
 
 def add_review(city, rating, price, text, writtenBy):
     r = Review.objects.get_or_create(City=city, WrittenBy = writtenBy)[0]

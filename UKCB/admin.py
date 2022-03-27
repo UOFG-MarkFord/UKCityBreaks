@@ -1,5 +1,6 @@
 from django.contrib import admin
-from UKCB.models import UserProfile
+from UKCB.models import UserProfile
+
 from UKCB.models import City, Review
 
 # Register your models here.
